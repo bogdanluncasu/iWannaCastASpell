@@ -16,7 +16,7 @@ def verify():
         return request.args["hub.challenge"], 200
 	sender_id = "847351308664096"
 	msg=send_message(sender_id, "Random.org")
-    return msg, 200
+    return "HOLLA", 200
 
 
 @app.route('/', methods=['POST'])
