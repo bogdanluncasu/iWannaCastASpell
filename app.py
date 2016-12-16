@@ -15,7 +15,7 @@ def verify():
             return "Verification token mismatch", 403
         return request.args["hub.challenge"], 200
 	sender_id = "847351308664096"
-	msg=send_message(sender_id, "Random.org")
+	send_message(sender_id, "Random.org")
     return "HOLLA", 200
 
 
@@ -63,7 +63,7 @@ def send_message(recipient_id, message_text):
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     
-	return str(r.status_code)
+	#return str(r.status_code)
 
 
 
