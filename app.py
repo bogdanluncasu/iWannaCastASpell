@@ -14,6 +14,8 @@ def verify():
         if not request.args.get("hub.verify_token") == os.environ["VERIFY_TOKEN"]:
             return "Verification token mismatch", 403
         return request.args["hub.challenge"], 200
+	sender_id = "847351308664096"
+	send_message(sender_id, "Random.org")
     return "Hello world", 200
 
 
@@ -24,13 +26,13 @@ def webhook():
 
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
-
+#100002478108714
     if data["object"] == "page":
 
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
                 if messaging_event.get("message"):
-                    sender_id = "847351308664096" # messaging_event["sender"]["id"]
+                    sender_id = messaging_event["sender"]["id"]
                     recipient_id = messaging_event["recipient"]["id"]  
                     message_text = messaging_event["message"]["text"]  
                     send_message(sender_id, "This is fun")
