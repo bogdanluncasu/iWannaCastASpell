@@ -96,13 +96,13 @@ def send_message(recipient_id, message_text):
 
 
 if __name__ == '__main__':
-    if (bot == None):
-        print "Bot initializer"
-        bot = Kernel()
-        files = sorted(listdir('standard'))
-        for file in files:
-            bot.learn('standard/' + file)
 
-        set_personality(bot)
-        substs = processing.get_substitutions()
+    print "Bot initializer"
+    bot = Kernel()
+    files = sorted(listdir('standard'))
+    for file in files:
+        bot.learn('standard/' + file)
+
+    set_personality(bot)
+    substs = processing.get_substitutions()
     app.run(debug=True)
