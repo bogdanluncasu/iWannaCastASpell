@@ -28,8 +28,15 @@ def set_personality(bot):
     bot.setBotPredicate("email", "wasluyanu@bot.ro")
 
 
-bot = None
-substs = None
+print "Bot initializer"
+bot = Kernel()
+files = sorted(listdir('standard'))
+for file in files:
+    bot.learn('standard/' + file)
+
+set_personality(bot)
+substs = processing.get_substitutions()
+
 app = Flask(__name__)
 
 
@@ -96,13 +103,4 @@ def send_message(recipient_id, message_text):
 
 
 if __name__ == '__main__':
-
-    print "Bot initializer"
-    bot = Kernel()
-    files = sorted(listdir('standard'))
-    for file in files:
-        bot.learn('standard/' + file)
-
-    set_personality(bot)
-    substs = processing.get_substitutions()
     app.run(debug=True)
