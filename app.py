@@ -29,13 +29,13 @@ def set_personality(bot):
 
 
 print "Bot initializer"
-bot = Kernel()
-files = sorted(listdir('standard'))
-for file in files:
-    bot.learn('standard/' + file)
+#bot = Kernel()
+#files = sorted(listdir('standard'))
+#for file in files:
+#    bot.learn('standard/' + file)
 
-set_personality(bot)
-substs = processing.get_substitutions()
+#set_personality(bot)
+#substs = processing.get_substitutions()
 
 app = Flask(__name__)
 
@@ -69,8 +69,8 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]
                     message_text = messaging_event["message"]["text"]
 
-                    reply = ask_him(message_text, 0, bot, substs, sender_id)
-                    send_message(recipient_id, reply)
+#                    reply = ask_him(message_text, 0, bot, substs, sender_id)
+                    send_message(recipient_id, "JOLLA")
 
                 if messaging_event.get("delivery"):
                     pass
